@@ -1,0 +1,35 @@
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+#create new role
+sudo -u postgres createuser --interactive
+>>
+	Output
+	Enter name of role to add: developer
+	Shall the new role be a superuser? (y/n) y
+<<
+
+#create db
+sudo -u postgres createdb advertising
+
+#add pg-user to Ubuntu
+sudo adduser developer
+>> 
+	enter password: 123456
+	Retype new password:
+	Full name []: developer
+	Room Number []: 1
+	Work Phone []: 1
+	Home Phone []: 1
+	Other []: 1
+	Is the information correct? [Y/n] Y
+<<
+
+#important
+#change password in PostgreSQL for users: postgres and developer
+sudo -i -u postgres
+psql
+ALTER USER postgres PASSWORD 'xxxxxxx';
+ALTER USER developer PASSWORD 'xxxxxxx';
+
+>>quite
